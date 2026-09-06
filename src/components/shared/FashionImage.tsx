@@ -47,7 +47,8 @@ export function FashionImage({
         fill
         priority={priority}
         sizes={sizes}
-        quality={80}
+        quality={90}
+        unoptimized
         className={cn(
           "object-cover object-center transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.035]",
           imageClassName,

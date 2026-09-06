@@ -41,18 +41,18 @@ Leave `NEXT_PUBLIC_WHATSAPP_NUMBER` empty until the live business number is read
 
 All campaign imagery is catalogued in `src/data/images.ts` — alt text, intended usage, and file paths in one place.
 
-Drop XQUISITE photography into `public/images/` using the same filenames, or update the `src` values in that catalog.
+Drop XQUISITE photography into `public/images/v2/` using the same filenames, or update the `src` values in that catalog.
 
 | Path | Use |
 | --- | --- |
-| `public/images/hero.jpg` | Homepage hero |
-| `public/images/editorial.jpg` | Campaign statement |
-| `public/images/about.jpg` | Brand story |
-| `public/images/brand-portrait.jpg` | About page hero |
-| `public/images/collections/` | Shop category panels |
-| `public/images/products/` | Product galleries |
-| `public/images/lookbook/` | Lookbook |
-| `public/images/instagram/` | Instagram grid |
+| `public/images/v2/hero.png` | Homepage hero |
+| `public/images/v2/editorial.png` | Campaign statement |
+| `public/images/v2/about.png` | Brand story |
+| `public/images/v2/brand-portrait.png` | About page hero |
+| `public/images/v2/collections/` | Shop category panels |
+| `public/images/v2/products/` | Product galleries |
+| `public/images/v2/lookbook/` | Lookbook |
+| `public/images/v2/instagram/` | Instagram grid |
 
 Current files are temporary women's fashion campaign stills, structured so they can be replaced without touching layout.
 
