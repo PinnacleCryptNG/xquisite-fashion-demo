@@ -46,13 +46,12 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
 body {
-  overflow-x: hidden;
   background: var(--ivory);
   color: var(--charcoal);
   font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;

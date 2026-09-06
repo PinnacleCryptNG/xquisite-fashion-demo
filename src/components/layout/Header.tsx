@@ -103,7 +103,7 @@ export function Header() {
 
           <MobileMenuButton
             open={open}
-            onOpenChange={() => setOpen((value) => !value)}
+            onOpenChange={setOpen}
             inverted={overHero}
           />
         </div>

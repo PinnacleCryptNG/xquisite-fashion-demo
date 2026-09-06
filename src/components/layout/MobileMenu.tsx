@@ -2,7 +2,8 @@
 
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 import { siteConfig } from "@/lib/config";
 import { cn } from "@/lib/utils";
@@ -35,7 +36,6 @@ export function MobileMenuButton({
         "relative z-[60] flex size-11 appearance-none items-center justify-center bg-transparent p-0 lg:hidden",
         inverted ? "text-ivory" : "text-charcoal",
       )}
-      data-menu-trigger="xquisite"
       onClick={() => onOpenChange(!open)}
     >
       {open ? (
@@ -62,11 +62,19 @@ export function MobileMenuPanel({
   const descriptionId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
   const whatsappHref = getWhatsAppUrl(generalEnquiryMessage());
+  const [root, setRoot] = useState<HTMLElement | null>(null);
+
+  useLayoutEffect(() => {
+    setRoot(document.documentElement);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
 
-    const previousOverflow = document.body.style.overflow;
+    const html = document.documentElement;
+    const previousHtmlOverflow = html.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
+    html.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
     closeRef.current?.focus();
 
@@ -79,24 +87,33 @@ export function MobileMenuPanel({
     document.addEventListener("keydown", onKeyDown);
 
     return () => {
-      document.body.style.overflow = previousOverflow;
+      html.style.overflow = previousHtmlOverflow;
+      document.body.style.overflow = previousBodyOverflow;
       document.removeEventListener("keydown", onKeyDown);
     };
   }, [open, onOpenChange]);
 
-  if (!open) {
+  if (!root || !open) {
     return null;
   }
 
-  return (
+  return createPortal(
     <div
       role="dialog"
       aria-modal="true"
       aria-labelledby={titleId}
       aria-describedby={descriptionId}
       id="mobile-navigation"
-      className="fixed inset-0 z-[120] flex h-dvh w-screen flex-col bg-ivory px-6 pt-8 pb-10 text-charcoal"
-      style={{ position: "fixed", inset: 0, zIndex: 120, backgroundColor: "#f6f1ea" }}
+      className="flex flex-col bg-ivory px-6 pt-8 pb-10 text-charcoal"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100dvh",
+        zIndex: 9999,
+        backgroundColor: "#f6f1ea",
+      }}
     >
       <h2
         id={titleId}
@@ -114,7 +131,7 @@ export function MobileMenuPanel({
         className="absolute top-7 right-5 flex size-11 appearance-none items-center justify-center bg-transparent p-0 text-charcoal sm:right-8"
         onClick={() => onOpenChange(false)}
       >
-        <X className="size-5" strokeWidth={1.25} />
+        <X className="pointer-events-none size-5" strokeWidth={1.25} />
       </button>
 
       <nav className="mt-24 flex flex-1 flex-col justify-center gap-8 sm:mt-28 sm:gap-10">
@@ -148,6 +165,7 @@ export function MobileMenuPanel({
           WhatsApp
         </a>
       </div>
-    </div>
+    </div>,
+    root,
   );
 }
