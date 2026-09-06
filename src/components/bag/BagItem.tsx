@@ -54,6 +54,7 @@ export function BagItem({ line, onQuantityChange, onRemove }: BagItemProps) {
           <button
             type="button"
             onClick={onRemove}
+            aria-label={`Remove ${line.product.name}${line.size ? `, size ${line.size}` : ""}`}
             className="min-h-11 font-sans text-[11px] tracking-[0.18em] text-stone uppercase transition-colors duration-500 hover:text-charcoal"
           >
             Remove

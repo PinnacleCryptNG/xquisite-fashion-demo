@@ -66,8 +66,13 @@ function getServerSnapshot() {
   return "[]";
 }
 
-function subscribeHydration() {
-  return () => {};
+function subscribeHydration(onChange: () => void) {
+  const frame = window.requestAnimationFrame(() => onChange());
+  const timer = window.setTimeout(onChange, 0);
+  return () => {
+    window.cancelAnimationFrame(frame);
+    window.clearTimeout(timer);
+  };
 }
 
 function getHydratedSnapshot() {
