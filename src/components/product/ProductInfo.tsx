@@ -1,12 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
+import { useBag } from "@/components/bag/BagProvider";
 import { ProductDetails } from "@/components/product/ProductDetails";
 import { QuantitySelector } from "@/components/product/QuantitySelector";
 import { SizeSelector } from "@/components/product/SizeSelector";
 import { Button } from "@/components/ui/button";
-import { getWhatsAppUrl, productEnquiryMessage } from "@/lib/whatsapp";
 import { formatNgn } from "@/lib/utils";
 import type { Product, ProductSize } from "@/types/product";
 
@@ -15,26 +16,24 @@ type ProductInfoProps = {
 };
 
 export function ProductInfo({ product }: ProductInfoProps) {
+  const { add } = useBag();
   const [size, setSize] = useState<ProductSize>();
   const [quantity, setQuantity] = useState(1);
   const [error, setError] = useState<string | null>(null);
-  const [ready, setReady] = useState(false);
+  const [added, setAdded] = useState(false);
 
   const needsSize = product.sizes.length > 0;
 
   function handleAdd() {
     if (needsSize && !size) {
-      setReady(false);
+      setAdded(false);
       setError("Select a size.");
       return;
     }
+    add({ slug: product.slug, size, quantity });
     setError(null);
-    setReady(true);
+    setAdded(true);
   }
-
-  const enquireHref = getWhatsAppUrl(
-    productEnquiryMessage(product.name, size, quantity),
-  );
 
   return (
     <div className="lg:sticky lg:top-32">
@@ -59,6 +58,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
             onChange={(next) => {
               setSize(next);
               setError(null);
+              setAdded(false);
             }}
           />
         </div>
@@ -77,20 +77,15 @@ export function ProductInfo({ product }: ProductInfoProps) {
             {error}
           </p>
         ) : null}
-        {ready ? (
-          <p className="mt-5 max-w-sm font-sans text-sm leading-relaxed text-stone">
-            {product.name}
-            {size ? `, size ${size}` : ""}
-            {quantity > 1 ? `, qty ${quantity}` : ""}. Enquire to complete your
-            order.{" "}
-            <a
-              href={enquireHref}
-              target="_blank"
-              rel="noopener noreferrer"
+        {added ? (
+          <p className="mt-5 font-sans text-sm leading-relaxed text-stone" role="status">
+            Added to your edit.{" "}
+            <Link
+              href="/bag"
               className="text-charcoal underline decoration-charcoal/30 underline-offset-4"
             >
-              Continue on WhatsApp
-            </a>
+              View your edit
+            </Link>
           </p>
         ) : null}
       </div>

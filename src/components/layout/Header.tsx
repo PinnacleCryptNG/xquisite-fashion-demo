@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { BagIndicator } from "@/components/bag/BagIndicator";
 import { MobileMenuButton, MobileMenuPanel } from "@/components/layout/MobileMenu";
 import { WhatsAppIcon } from "@/components/shared/WhatsAppIcon";
 import { siteConfig } from "@/lib/config";
@@ -80,6 +81,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center justify-self-end">
+            <BagIndicator inverted={overHero} />
             <div className="hidden items-center lg:flex">
               <a
                 href={siteConfig.instagramUrl}

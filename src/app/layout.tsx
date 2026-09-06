@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Outfit } from "next/font/google";
 
+import { BagProvider } from "@/components/bag/BagProvider";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { siteConfig } from "@/lib/config";
@@ -52,9 +53,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
+        <BagProvider>
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+        </BagProvider>
       </body>
     </html>
   );

@@ -1,10 +1,14 @@
 "use client";
 
+import { useId } from "react";
+
 type QuantitySelectorProps = {
   value: number;
   min?: number;
   max?: number;
   onChange: (value: number) => void;
+  label?: string;
+  compact?: boolean;
 };
 
 export function QuantitySelector({
@@ -12,22 +16,31 @@ export function QuantitySelector({
   min = 1,
   max = 8,
   onChange,
+  label = "Quantity",
+  compact = false,
 }: QuantitySelectorProps) {
+  const uid = useId();
   const atMin = value <= min;
   const atMax = value >= max;
 
   return (
     <div>
-      <p
-        id="quantity-label"
-        className="mb-4 font-sans text-[11px] tracking-[0.22em] text-stone uppercase"
-      >
-        Quantity
-      </p>
+      {compact ? (
+        <p id={uid} className="sr-only">
+          {label}
+        </p>
+      ) : (
+        <p
+          id={uid}
+          className="mb-4 font-sans text-[11px] tracking-[0.22em] text-stone uppercase"
+        >
+          {label}
+        </p>
+      )}
       <div
         className="inline-flex items-center gap-5"
         role="group"
-        aria-labelledby="quantity-label"
+        aria-labelledby={uid}
       >
         <button
           type="button"
