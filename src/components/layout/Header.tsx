@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { MobileMenu } from "@/components/layout/MobileMenu";
+import { MobileMenuButton, MobileMenuPanel } from "@/components/layout/MobileMenu";
 import { WhatsAppIcon } from "@/components/shared/WhatsAppIcon";
 import { siteConfig } from "@/lib/config";
 import { cn } from "@/lib/utils";
@@ -35,15 +35,16 @@ export function Header() {
   const whatsappHref = getWhatsAppUrl(generalEnquiryMessage());
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,color,backdrop-filter] duration-700 ease-out",
-        overHero
-          ? "border-transparent bg-transparent text-ivory"
-          : "border-charcoal/10 bg-ivory/95 text-charcoal backdrop-blur-[2px]",
-      )}
-    >
-      <div className="mx-auto flex h-[4.5rem] max-w-[1600px] items-center justify-between gap-4 px-5 sm:h-20 sm:px-8 lg:px-12">
+    <>
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,color,backdrop-filter] duration-700 ease-out",
+          overHero
+            ? "border-transparent bg-transparent text-ivory"
+            : "border-charcoal/10 bg-ivory/95 text-charcoal backdrop-blur-[2px]",
+        )}
+      >
+        <div className="mx-auto flex h-[4.5rem] max-w-[1600px] items-center justify-between gap-4 px-5 sm:h-20 sm:px-8 lg:px-12">
         <Link
           href="/"
           className={cn(
@@ -100,14 +101,19 @@ export function Header() {
             </a>
           </div>
 
-          <MobileMenu
+          <MobileMenuButton
             open={open}
             onOpenChange={setOpen}
             inverted={overHero}
-            links={HEADER_LINKS}
           />
         </div>
-      </div>
-    </header>
+        </div>
+      </header>
+      <MobileMenuPanel
+        open={open}
+        onOpenChange={setOpen}
+        links={HEADER_LINKS}
+      />
+    </>
   );
 }
