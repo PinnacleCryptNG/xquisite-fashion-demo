@@ -35,12 +35,17 @@ export function MobileMenuButton({
         "relative z-[60] flex size-11 appearance-none items-center justify-center bg-transparent p-0 lg:hidden",
         inverted ? "text-ivory" : "text-charcoal",
       )}
-      onClick={() => onOpenChange(!open)}
+      data-menu-trigger="xquisite"
+      onPointerDown={(event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        onOpenChange(!open);
+      }}
     >
       {open ? (
-        <X className="size-5" strokeWidth={1.25} />
+        <X className="pointer-events-none size-5" strokeWidth={1.25} />
       ) : (
-        <Menu className="size-5" strokeWidth={1.25} />
+        <Menu className="pointer-events-none size-5" strokeWidth={1.25} />
       )}
     </button>
   );
@@ -95,6 +100,7 @@ export function MobileMenuPanel({
       aria-describedby={descriptionId}
       id="mobile-navigation"
       className="fixed inset-0 z-[120] flex h-dvh w-screen flex-col bg-ivory px-6 pt-8 pb-10 text-charcoal"
+      style={{ position: "fixed", inset: 0, zIndex: 120, backgroundColor: "#f6f1ea" }}
     >
       <h2
         id={titleId}
