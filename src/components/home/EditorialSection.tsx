@@ -53,27 +53,27 @@ export function EditorialSection() {
         </div>
       </div>
 
-      <div className="relative hidden h-[min(92svh,58rem)] min-h-[640px] overflow-hidden lg:block">
+      <div className="relative hidden min-h-[48rem] overflow-hidden lg:block lg:h-[92svh] xl:min-h-[54rem]">
         <FashionImage
           src={siteImages.editorial.src}
           alt={siteImages.editorial.alt}
           fillParent
           sizes="100vw"
           className="absolute inset-0"
-          imageClassName="object-[46%_40%] motion-safe:animate-[xq-editorial-still_2.8s_cubic-bezier(0.22,1,0.36,1)_both] xl:object-[44%_42%]"
+          imageClassName="object-[50%_8%] motion-safe:animate-[xq-editorial-still_2.8s_cubic-bezier(0.22,1,0.36,1)_both] xl:object-[48%_10%] 2xl:object-[46%_12%]"
         />
 
-        <div className="pointer-events-none absolute inset-0 flex items-center">
-          <div className="w-[min(40vw,34rem)] pl-16 motion-safe:animate-[xq-editorial-rise_1.05s_cubic-bezier(0.22,1,0.36,1)_0.22s_both] xl:pl-24 2xl:pl-32">
+        <div className="pointer-events-none absolute inset-0 flex items-end">
+          <div className="w-[min(34vw,30rem)] pb-16 pl-14 motion-safe:animate-[xq-editorial-rise_1.05s_cubic-bezier(0.22,1,0.36,1)_0.22s_both] xl:pb-20 xl:pl-20 2xl:pb-24 2xl:pl-28">
             <p
               aria-hidden="true"
-              className="max-w-[12ch] font-serif text-[3.15rem] font-light leading-[1.04] tracking-[0.012em] text-charcoal xl:text-[3.85rem] 2xl:text-[4.4rem]"
+              className="max-w-[11ch] font-serif text-[2.85rem] font-light leading-[1.04] tracking-[0.012em] text-charcoal xl:text-[3.55rem] 2xl:text-[4.15rem]"
             >
               DRESS LIKE YOU
               <br />
               MEAN IT.
             </p>
-            <p className="mt-7 max-w-[20rem] font-sans text-sm font-light leading-relaxed text-stone xl:mt-8 xl:text-[15px]">
+            <p className="mt-6 max-w-[18rem] font-sans text-sm font-light leading-relaxed text-stone xl:mt-7 xl:text-[15px]">
               For the woman who enters a room with intention.
             </p>
           </div>
