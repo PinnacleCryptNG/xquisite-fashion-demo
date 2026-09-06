@@ -25,28 +25,28 @@ export function Hero() {
         priority
         sizes="100vw"
         className="absolute inset-0"
-        imageClassName="object-[58%_10%] motion-safe:animate-[xquisite-hero-still_11s_cubic-bezier(0.22,1,0.36,1)_forwards] sm:object-[52%_16%] lg:object-[44%_20%] xl:object-[42%_18%]"
+        imageClassName="object-[50%_8%] motion-safe:animate-[xquisite-hero-still_11s_cubic-bezier(0.22,1,0.36,1)_forwards] sm:object-[46%_14%] md:object-[40%_24%] lg:object-[34%_30%] xl:object-[30%_22%]"
       />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(15,14,13,0.38)_0%,rgba(15,14,13,0.12)_32%,transparent_58%)]"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(15,14,13,0.36)_0%,rgba(15,14,13,0.1)_28%,transparent_52%)]"
       />
 
-      <div className="relative mx-auto flex h-full max-w-[1600px] flex-col justify-end px-5 pt-24 pb-10 sm:px-8 sm:pb-14 lg:px-12 lg:pb-20">
-        <div className="max-w-xl motion-safe:animate-[xquisite-hero-rise_1.15s_cubic-bezier(0.22,1,0.36,1)_0.12s_both] motion-reduce:opacity-100 lg:max-w-2xl">
+      <div className="relative mx-auto flex h-full max-w-[1600px] flex-col justify-end px-5 pt-24 pb-8 sm:px-8 sm:pb-12 lg:px-12 lg:pb-16">
+        <div className="max-w-[17rem] motion-safe:animate-[xquisite-hero-rise_1.15s_cubic-bezier(0.22,1,0.36,1)_0.12s_both] motion-reduce:opacity-100 sm:max-w-xs lg:max-w-sm xl:max-w-md">
           <p className="font-sans text-[10px] tracking-[0.32em] uppercase text-ivory/72 sm:text-[11px]">
             Nigeria · Contemporary womenswear
           </p>
-          <h1 className="mt-4 font-serif text-[2.35rem] leading-[1.02] font-light tracking-tight sm:mt-5 sm:text-5xl lg:text-6xl xl:text-[4.25rem] xl:leading-[1.02]">
+          <h1 className="mt-3 font-serif text-[2.1rem] leading-[1.05] font-light tracking-tight sm:mt-4 sm:text-4xl lg:text-5xl xl:text-[3.5rem] xl:leading-[1.04]">
             Contemporary fashion
             <br />
             for the modern woman.
           </h1>
-          <p className="mt-5 max-w-md font-sans text-sm leading-relaxed text-ivory/80 sm:mt-6 sm:text-[15px]">
+          <p className="mt-4 max-w-sm font-sans text-sm leading-relaxed text-ivory/80 sm:mt-5 sm:text-[15px]">
             Considered silhouettes designed for women who move with confidence.
           </p>
-          <div className="mt-8 flex flex-col gap-2.5 sm:mt-9 sm:flex-row sm:items-center">
+          <div className="mt-7 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:items-center">
             <Button
               asChild
               variant="ivory"
