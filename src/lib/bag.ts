@@ -28,11 +28,9 @@ export function clampBagQuantity(value: number) {
   return Math.min(BAG_MAX_QTY, Math.max(BAG_MIN_QTY, Math.round(value)));
 }
 
-export function readBagEntries(): BagEntry[] {
-  if (typeof window === "undefined") return [];
+export function parseBagEntries(raw: string | null): BagEntry[] {
+  if (!raw) return [];
   try {
-    const raw = window.localStorage.getItem(BAG_STORAGE_KEY);
-    if (!raw) return [];
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed)) return [];
     return parsed
@@ -52,6 +50,11 @@ export function readBagEntries(): BagEntry[] {
   } catch {
     return [];
   }
+}
+
+export function readBagEntries(): BagEntry[] {
+  if (typeof window === "undefined") return [];
+  return parseBagEntries(window.localStorage.getItem(BAG_STORAGE_KEY));
 }
 
 export function writeBagEntries(entries: BagEntry[]) {

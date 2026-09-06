@@ -4,12 +4,12 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
-  useState,
+  useSyncExternalStore,
 } from "react";
 
 import {
+  BAG_STORAGE_KEY,
   type BagEntry,
   type BagLine,
   bagEnquiryMessage,
@@ -17,11 +17,14 @@ import {
   bagItemCount,
   bagLineKey,
   clampBagQuantity,
+  parseBagEntries,
   readBagEntries,
   resolveBagLines,
   writeBagEntries,
 } from "@/lib/bag";
 import type { ProductSize } from "@/types/product";
+
+const BAG_CHANGE = "xquisite-edit-change";
 
 type AddArgs = {
   slug: string;
@@ -43,6 +46,43 @@ type BagContextValue = {
 
 const BagContext = createContext<BagContextValue | null>(null);
 
+function subscribeBag(onChange: () => void) {
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === null || event.key === BAG_STORAGE_KEY) onChange();
+  };
+  window.addEventListener("storage", onStorage);
+  window.addEventListener(BAG_CHANGE, onChange);
+  return () => {
+    window.removeEventListener("storage", onStorage);
+    window.removeEventListener(BAG_CHANGE, onChange);
+  };
+}
+
+function getBagSnapshot() {
+  return window.localStorage.getItem(BAG_STORAGE_KEY) ?? "[]";
+}
+
+function getServerSnapshot() {
+  return "[]";
+}
+
+function subscribeHydration() {
+  return () => {};
+}
+
+function getHydratedSnapshot() {
+  return true;
+}
+
+function getHydratedServerSnapshot() {
+  return false;
+}
+
+function commit(entries: BagEntry[]) {
+  writeBagEntries(entries);
+  window.dispatchEvent(new Event(BAG_CHANGE));
+}
+
 function upsertEntry(entries: BagEntry[], incoming: AddArgs): BagEntry[] {
   const key = bagLineKey(incoming.slug, incoming.size);
   const next = [...entries];
@@ -63,26 +103,25 @@ function upsertEntry(entries: BagEntry[], incoming: AddArgs): BagEntry[] {
 }
 
 export function BagProvider({ children }: { children: React.ReactNode }) {
-  const [entries, setEntries] = useState<BagEntry[]>([]);
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    setEntries(readBagEntries());
-    setReady(true);
-  }, []);
-
-  useEffect(() => {
-    if (!ready) return;
-    writeBagEntries(entries);
-  }, [entries, ready]);
+  const snapshot = useSyncExternalStore(
+    subscribeBag,
+    getBagSnapshot,
+    getServerSnapshot,
+  );
+  const ready = useSyncExternalStore(
+    subscribeHydration,
+    getHydratedSnapshot,
+    getHydratedServerSnapshot,
+  );
+  const entries = useMemo(() => parseBagEntries(snapshot), [snapshot]);
 
   const add = useCallback((item: AddArgs) => {
-    setEntries((current) => upsertEntry(current, item));
+    commit(upsertEntry(readBagEntries(), item));
   }, []);
 
   const setQuantity = useCallback((key: string, quantity: number) => {
-    setEntries((current) =>
-      current.map((entry) =>
+    commit(
+      readBagEntries().map((entry) =>
         bagLineKey(entry.slug, entry.size) === key
           ? { ...entry, quantity: clampBagQuantity(quantity) }
           : entry,
@@ -91,12 +130,14 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const remove = useCallback((key: string) => {
-    setEntries((current) =>
-      current.filter((entry) => bagLineKey(entry.slug, entry.size) !== key),
+    commit(
+      readBagEntries().filter(
+        (entry) => bagLineKey(entry.slug, entry.size) !== key,
+      ),
     );
   }, []);
 
-  const clear = useCallback(() => setEntries([]), []);
+  const clear = useCallback(() => commit([]), []);
 
   const value = useMemo(() => {
     const lines = resolveBagLines(entries);
