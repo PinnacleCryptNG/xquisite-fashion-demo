@@ -13,11 +13,16 @@ export function getWhatsAppUrl(message: string) {
   return `https://wa.me/${phone}?text=${text}`;
 }
 
-export function productEnquiryMessage(productName: string, size?: string) {
+export function productEnquiryMessage(
+  productName: string,
+  size?: string,
+  quantity = 1,
+) {
+  const qty = quantity > 1 ? ` (qty ${quantity})` : "";
   if (size) {
-    return `Hello XQUISITE, I'd like to order ${productName} in size ${size}.`;
+    return `Hello XQUISITE, I'd like to order ${productName} in size ${size}${qty}.`;
   }
-  return `Hello XQUISITE, I'd like to enquire about ${productName}.`;
+  return `Hello XQUISITE, I'd like to enquire about ${productName}${qty}.`;
 }
 
 export function generalEnquiryMessage() {

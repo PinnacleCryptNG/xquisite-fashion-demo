@@ -10,12 +10,14 @@ type SizeSelectorProps = {
 };
 
 export function SizeSelector({ sizes, value, onChange }: SizeSelectorProps) {
+  if (sizes.length === 0) return null;
+
   return (
     <fieldset>
-      <legend className="mb-3 font-sans text-[10px] font-medium tracking-[0.22em] uppercase text-stone">
+      <legend className="mb-4 font-sans text-[11px] tracking-[0.22em] text-stone uppercase">
         Size
       </legend>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-x-6 gap-y-2">
         {sizes.map((size) => {
           const selected = value === size;
           return (
@@ -25,10 +27,10 @@ export function SizeSelector({ sizes, value, onChange }: SizeSelectorProps) {
               onClick={() => onChange(size)}
               aria-pressed={selected}
               className={cn(
-                "flex h-11 min-w-11 items-center justify-center border px-3 font-sans text-xs tracking-[0.12em] transition-colors duration-300",
+                "min-h-11 min-w-8 font-sans text-[13px] tracking-[0.14em] uppercase transition-colors duration-500",
                 selected
-                  ? "border-charcoal bg-charcoal text-ivory"
-                  : "border-charcoal/20 text-charcoal hover:border-charcoal",
+                  ? "border-b border-charcoal text-charcoal"
+                  : "border-b border-transparent text-stone hover:text-charcoal",
               )}
             >
               {size}
