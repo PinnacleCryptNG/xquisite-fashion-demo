@@ -8,6 +8,13 @@
   --charcoal: #1c1917;
   --ink: #0f0e0d;
   --warm: #a89078;
+
+  --ease-editorial: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --duration-hover: 400ms;
+  --radius-control: 2px;
+  --page-gutter: clamp(1.25rem, 4.8vw, 2.75rem);
+  --section-space: clamp(4.5rem, 11vw, 8.75rem);
+  --section-space-sm: clamp(3.25rem, 7vw, 5.5rem);
 }
 
 @theme inline {
@@ -20,23 +27,148 @@
   --color-warm: var(--warm);
   --color-background: var(--ivory);
   --color-foreground: var(--charcoal);
+  --color-border: color-mix(in srgb, var(--charcoal) 10%, transparent);
   --font-sans: var(--font-outfit);
   --font-serif: var(--font-cormorant);
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 4px;
+  --radius-xl: 4px;
+  --tracking-button: 0.22em;
+  --tracking-label: 0.2em;
+  --spacing-gutter: var(--page-gutter);
+  --spacing-section: var(--section-space);
+  --spacing-section-sm: var(--section-space-sm);
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
+  overflow-x: hidden;
   background: var(--ivory);
   color: var(--charcoal);
   font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 0.9375rem;
+  letter-spacing: 0.012em;
+  line-height: 1.7;
+}
+
+@media (min-width: 640px) {
+  body {
+    font-size: 1rem;
+  }
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+blockquote {
+  font-family: var(--font-cormorant), ui-serif, Georgia, "Times New Roman", serif;
+  font-weight: 300;
+  font-style: normal;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+h1 {
+  line-height: 1.06;
+}
+
+h2 {
+  line-height: 1.1;
+}
+
+h3,
+h4 {
+  line-height: 1.18;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+label,
+legend {
+  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.2em;
 }
 
 ::selection {
   background: var(--charcoal);
   color: var(--ivory);
+}
+
+a {
+  text-underline-offset: 0.28em;
+  text-decoration-thickness: 1px;
+  transition:
+    color var(--duration-hover) var(--ease-editorial),
+    opacity var(--duration-hover) var(--ease-editorial),
+    text-decoration-color var(--duration-hover) var(--ease-editorial);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  main a:not([data-slot="button"]):not(:has(img)):hover {
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 55%, transparent);
+  }
+
+  main a:not(.group) img {
+    transform: translateZ(0);
+    transition: transform 700ms var(--ease-editorial);
+  }
+
+  main a:not(.group):hover img {
+    transform: scale(1.025);
+  }
+}
+
+[data-slot="button"] {
+  border-radius: var(--radius-control);
+  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transition:
+    background-color var(--duration-hover) var(--ease-editorial),
+    color var(--duration-hover) var(--ease-editorial),
+    border-color var(--duration-hover) var(--ease-editorial),
+    opacity var(--duration-hover) var(--ease-editorial);
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--charcoal);
+  outline-offset: 3px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+@media (max-width: 414px) {
+  h1,
+  h2 {
+    overflow-wrap: break-word;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -51,5 +183,9 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  main a:not(.group):hover img {
+    transform: none;
   }
 }
