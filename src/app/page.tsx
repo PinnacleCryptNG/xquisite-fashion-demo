@@ -1,5 +1,5 @@
 import { BrandStory } from "@/components/home/BrandStory";
-import { Collections } from "@/components/home/Collections";
+import { EditorialCollections } from "@/components/home/EditorialCollections";
 import { EditorialSection } from "@/components/home/EditorialSection";
 import { Hero } from "@/components/home/Hero";
 import { InstagramGrid } from "@/components/home/InstagramGrid";
@@ -13,7 +13,7 @@ export default function HomePage() {
       <Hero />
       <NewArrivals />
       <EditorialSection />
-      <Collections />
+      <EditorialCollections />
       <LookbookPreview />
       <BrandStory />
       <WhatsAppCTA />
