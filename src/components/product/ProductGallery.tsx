@@ -22,15 +22,49 @@ export function ProductGallery({ name, images }: ProductGalleryProps) {
 
   return (
     <div>
-      <FashionImage
-        key={current.src}
-        src={current.src}
-        alt={current.alt}
-        ratio="portrait"
-        priority
-        sizes="(max-width: 1023px) 100vw, 60vw"
-        imageClassName="motion-safe:animate-[xq-pdp-fade_500ms_ease-out]"
-      />
+      <div className={cn(hasMany && "lg:grid lg:grid-cols-[72px_minmax(0,1fr)] lg:gap-4")}>
+        {hasMany ? (
+          <ul className="hidden lg:flex lg:flex-col lg:gap-3">
+            {images.map((image, index) => {
+              const selected = index === active;
+              return (
+                <li key={image.src}>
+                  <button
+                    type="button"
+                    onClick={() => setActive(index)}
+                    aria-label={`View ${name}, image ${index + 1}`}
+                    aria-pressed={selected}
+                    className={cn(
+                      "block w-full overflow-hidden border transition-opacity duration-500",
+                      selected
+                        ? "border-charcoal"
+                        : "border-transparent opacity-55 hover:opacity-100",
+                    )}
+                  >
+                    <FashionImage
+                      src={image.src}
+                      alt=""
+                      ratio="portrait"
+                      sizes="72px"
+                      imageClassName="motion-safe:group-hover:scale-100"
+                    />
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        ) : null}
+
+        <FashionImage
+          key={current.src}
+          src={current.src}
+          alt={current.alt}
+          ratio="portrait"
+          priority
+          sizes="(max-width: 1023px) 100vw, 55vw"
+          imageClassName="motion-safe:animate-[xq-pdp-fade_500ms_ease-out]"
+        />
+      </div>
 
       {hasMany ? (
         <div className="mt-3 flex items-center justify-between lg:hidden">
@@ -54,38 +88,6 @@ export function ProductGallery({ name, images }: ProductGalleryProps) {
             →
           </button>
         </div>
-      ) : null}
-
-      {hasMany ? (
-        <ul className="mt-3 hidden gap-3 lg:flex">
-          {images.map((image, index) => {
-            const selected = index === active;
-            return (
-              <li key={image.src} className="w-16 xl:w-20">
-                <button
-                  type="button"
-                  onClick={() => setActive(index)}
-                  aria-label={`View ${name}, image ${index + 1}`}
-                  aria-pressed={selected}
-                  className={cn(
-                    "block w-full overflow-hidden border transition-opacity duration-500",
-                    selected
-                      ? "border-charcoal"
-                      : "border-transparent opacity-55 hover:opacity-100",
-                  )}
-                >
-                  <FashionImage
-                    src={image.src}
-                    alt=""
-                    ratio="portrait"
-                    sizes="80px"
-                    imageClassName="motion-safe:group-hover:scale-100"
-                  />
-                </button>
-              </li>
-            );
-          })}
-        </ul>
       ) : null}
 
       <style>{`
