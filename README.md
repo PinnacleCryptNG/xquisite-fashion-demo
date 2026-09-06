@@ -63,13 +63,15 @@ Current files are temporary women's fashion campaign stills, structured so they 
 | `/` | Homepage |
 | `/shop` | Collection, with `?collection=` filters |
 | `/product/[slug]` | Product detail |
+| `/bag` | Your Edit — selected pieces and WhatsApp enquiry |
 | `/lookbook` | Editorial lookbook |
 | `/about` | The house |
 | `/contact` | Contact and WhatsApp |
 
-## Orders
+## Your Edit
 
-`WhatsAppOrderButton` opens a pre-filled WhatsApp message:
+Pieces are collected client-side in **Your Edit** (not a checkout). Select a size on the product page, add to bag, then review on `/bag` and send one WhatsApp enquiry.
 
-- No size: `Hello XQUISITE, I'd like to enquire about [PRODUCT NAME].`
-- With size: `Hello XQUISITE, I'd like to order [PRODUCT NAME] in size [SIZE].`
+The edit persists in `localStorage` under `xquisite-edit`. There is no payment, account, or order confirmation.
+
+The enquiry message lists each piece, size, quantity, and an estimated total. WhatsApp uses `NEXT_PUBLIC_WHATSAPP_NUMBER` from `src/lib/config.ts` when set.
