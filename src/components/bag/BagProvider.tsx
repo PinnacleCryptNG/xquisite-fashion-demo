@@ -52,7 +52,9 @@ function subscribeBag(onChange: () => void) {
   };
   window.addEventListener("storage", onStorage);
   window.addEventListener(BAG_CHANGE, onChange);
+  const timer = window.setTimeout(onChange, 0);
   return () => {
+    window.clearTimeout(timer);
     window.removeEventListener("storage", onStorage);
     window.removeEventListener(BAG_CHANGE, onChange);
   };
