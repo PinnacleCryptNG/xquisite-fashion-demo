@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { ScrollActiveIntoView } from "@/components/shop/ScrollActiveIntoView";
 import { shopHref, shopNav } from "@/data/shop-collections";
 import { cn } from "@/lib/utils";
 
@@ -18,6 +19,7 @@ export function CollectionNav({
 
   return (
     <nav aria-label="Shop collections" className="border-b border-charcoal/10">
+      <ScrollActiveIntoView scope='[aria-label="Shop collections"]' />
       <ul className="-mx-5 flex gap-7 overflow-x-auto px-5 [scrollbar-width:none] [-ms-overflow-style:none] sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0 [&::-webkit-scrollbar]:hidden">
         {shopNav.map((item) => {
           const isActive = current === item.value;
