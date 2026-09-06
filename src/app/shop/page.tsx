@@ -1,65 +1,49 @@
 import type { Metadata } from "next";
 
-import { CollectionFilters } from "@/components/product/CollectionFilters";
 import { ProductGrid } from "@/components/product/ProductGrid";
-import { SectionHeading } from "@/components/shared/SectionHeading";
+import { CollectionNav } from "@/components/shop/CollectionNav";
+import { ShopEmpty } from "@/components/shop/ShopEmpty";
+import { ShopHeader } from "@/components/shop/ShopHeader";
+import { ShopToolbar } from "@/components/shop/ShopToolbar";
 import { filterProducts } from "@/data/products";
+import { isShopSort, sortProducts } from "@/data/shop-collections";
 
 export const metadata: Metadata = {
   title: "Shop",
   description:
-    "Shop the XQUISITE collection — new arrivals, dresses, sets and contemporary tailoring for the modern woman.",
-};
-
-const titles: Record<string, { title: string; description: string }> = {
-  "new-arrivals": {
-    title: "New arrivals",
-    description:
-      "The latest pieces from the house — considered, current, and made to last beyond the season.",
-  },
-  dresses: {
-    title: "Dresses",
-    description:
-      "Silhouettes with presence. From the column to the wrap, each dress is cut to become a signature.",
-  },
-  sets: {
-    title: "Sets",
-    description:
-      "Two-pieces composed as one thought. Worn together, or parted — as you please.",
-  },
-  tailoring: {
-    title: "Tailoring",
-    description:
-      "Jackets and trousers with a long, clean line — structure without severity.",
-  },
+    "Shop XQUISITE — contemporary silhouettes, everyday sets and statement pieces for the modern woman.",
 };
 
 export default async function ShopPage({
   searchParams,
 }: {
-  searchParams: Promise<{ collection?: string; q?: string }>;
+  searchParams: Promise<{ collection?: string; q?: string; sort?: string }>;
 }) {
-  const { collection, q } = await searchParams;
-  const copy = (collection && titles[collection]) || {
-    title: "The collection",
-    description:
-      "A considered edit of contemporary pieces designed for the woman who moves with intention.",
-  };
-  const items = filterProducts({ collection, query: q });
+  const { collection, q, sort: sortParam } = await searchParams;
+  const sort = isShopSort(sortParam) ? sortParam : "recommended";
+  const items = sortProducts(filterProducts({ collection, query: q }), sort);
 
   return (
-    <div className="bg-ivory px-5 pt-28 pb-20 sm:px-8 sm:pt-32 sm:pb-24 lg:px-12 lg:pb-28">
+    <div className="bg-ivory px-5 pt-28 pb-20 sm:px-8 sm:pt-32 sm:pb-24 lg:px-12 lg:pt-36 lg:pb-28">
       <div className="mx-auto max-w-[1600px]">
-        <SectionHeading
-          eyebrow="Shop"
-          title={copy.title}
-          description={copy.description}
-          className="mb-12 sm:mb-16"
-        />
-        <div className="mb-12">
-          <CollectionFilters active={collection ?? "all"} />
+        <ShopHeader collection={collection} />
+
+        <div className="mt-12 sm:mt-14 lg:mt-16">
+          <CollectionNav active={collection ?? "all"} sort={sort} query={q} />
         </div>
-        <ProductGrid products={items} />
+
+        <div className="mt-8 mb-10 sm:mt-10 sm:mb-12 lg:mt-12 lg:mb-14">
+          <ShopToolbar count={items.length} />
+        </div>
+
+        {items.length === 0 ? (
+          <ShopEmpty />
+        ) : (
+          <ProductGrid
+            products={items}
+            className="gap-x-3.5 gap-y-12 sm:gap-x-7 sm:gap-y-16 lg:gap-x-10 lg:gap-y-20 xl:grid-cols-3"
+          />
+        )}
       </div>
     </div>
   );

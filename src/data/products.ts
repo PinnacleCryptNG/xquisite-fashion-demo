@@ -226,10 +226,8 @@ export function filterProducts(options: {
 
   if (collection === "new-arrivals") {
     result = result.filter((product) => product.newArrival);
-  } else if (collection === "dresses" || collection === "sets") {
+  } else if (collection && collection !== "all") {
     result = result.filter((product) => product.category === collection);
-  } else if (collection === "tailoring") {
-    result = result.filter((product) => product.category === "tailoring");
   }
 
   if (query?.trim()) {
