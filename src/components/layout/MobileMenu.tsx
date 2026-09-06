@@ -36,11 +36,7 @@ export function MobileMenuButton({
         inverted ? "text-ivory" : "text-charcoal",
       )}
       data-menu-trigger="xquisite"
-      onPointerDown={(event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        onOpenChange(!open);
-      }}
+      onClick={() => onOpenChange(!open)}
     >
       {open ? (
         <X className="pointer-events-none size-5" strokeWidth={1.25} />
