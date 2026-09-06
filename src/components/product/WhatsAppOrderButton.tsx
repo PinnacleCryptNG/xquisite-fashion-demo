@@ -22,7 +22,12 @@ export function WhatsAppOrderButton({
 
   return (
     <Button asChild size="lg" className={className}>
-      <a href={href} target="_blank" rel="noopener noreferrer">
+      <a
+        key={`${productName}-${size ?? "enquire"}`}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {size ? `Order in ${size} via WhatsApp` : "Enquire on WhatsApp"}
       </a>
     </Button>

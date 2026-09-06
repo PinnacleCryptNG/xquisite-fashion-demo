@@ -1,16 +1,15 @@
 "use client";
 
-import { Instagram, Menu, X } from "lucide-react";
+import { Instagram } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { WhatsAppIcon } from "@/components/shared/WhatsAppIcon";
-import { Button } from "@/components/ui/button";
 import { navLinks, siteConfig } from "@/lib/config";
-import { generalEnquiryMessage, getWhatsAppUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
+import { generalEnquiryMessage, getWhatsAppUrl } from "@/lib/whatsapp";
 
 export function Header() {
   const pathname = usePathname();
@@ -79,23 +78,7 @@ export function Header() {
           <MobileMenu
             open={open}
             onOpenChange={setOpen}
-            trigger={
-              <Button
-                variant="ghost"
-                size="icon"
-                className={cn(
-                  "lg:hidden",
-                  overHero && "text-ivory hover:text-ivory/80",
-                )}
-                aria-label={open ? "Close menu" : "Open menu"}
-              >
-                {open ? (
-                  <X className="size-5" strokeWidth={1.5} />
-                ) : (
-                  <Menu className="size-5" strokeWidth={1.5} />
-                )}
-              </Button>
-            }
+            inverted={overHero}
           />
         </div>
       </div>
