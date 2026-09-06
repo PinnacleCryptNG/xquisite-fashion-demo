@@ -30,38 +30,50 @@ export function MobileMenu({
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
-      <Dialog.Trigger asChild>
-        <button
-          type="button"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-haspopup="dialog"
-          className={cn(
-            "relative z-[60] flex size-11 items-center justify-center lg:hidden",
-            inverted ? "text-ivory" : "text-charcoal",
-          )}
-        >
-          {open ? (
-            <X className="size-5" strokeWidth={1.25} />
-          ) : (
-            <Menu className="size-5" strokeWidth={1.25} />
-          )}
-        </button>
-      </Dialog.Trigger>
+      <button
+        type="button"
+        aria-label={open ? "Close menu" : "Open menu"}
+        aria-expanded={open}
+        aria-haspopup="dialog"
+        aria-controls="mobile-navigation"
+        className={cn(
+          "relative z-[60] flex size-11 appearance-none items-center justify-center bg-transparent p-0 lg:hidden",
+          inverted ? "text-ivory" : "text-charcoal",
+        )}
+        onClick={() => onOpenChange(!open)}
+      >
+        {open ? (
+          <X className="size-5" strokeWidth={1.25} />
+        ) : (
+          <Menu className="size-5" strokeWidth={1.25} />
+        )}
+      </button>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-[70] bg-ivory" />
-        <Dialog.Content className="fixed inset-0 z-[80] flex flex-col bg-ivory px-6 pt-8 pb-10 text-charcoal outline-none sm:px-10">
+        <Dialog.Overlay className="fixed inset-0 z-[110] bg-ivory" />
+        <Dialog.Content
+          id="mobile-navigation"
+          aria-describedby="mobile-navigation-desc"
+          className="fixed inset-0 z-[120] flex flex-col bg-ivory px-6 pt-8 pb-10 text-charcoal outline-none sm:px-10"
+          onOpenAutoFocus={(event) => {
+            event.preventDefault();
+            const close = document.getElementById("mobile-navigation-close");
+            close?.focus();
+          }}
+          onPointerDownOutside={(event) => event.preventDefault()}
+          onInteractOutside={(event) => event.preventDefault()}
+        >
           <Dialog.Title className="font-sans text-[13px] font-medium tracking-[0.42em] uppercase sm:text-sm">
             XQUISITE
           </Dialog.Title>
-          <Dialog.Description className="sr-only">
+          <Dialog.Description id="mobile-navigation-desc" className="sr-only">
             Primary navigation
           </Dialog.Description>
           <Dialog.Close asChild>
             <button
+              id="mobile-navigation-close"
               type="button"
               aria-label="Close menu"
-              className="absolute top-7 right-5 flex size-11 items-center justify-center text-charcoal sm:right-8"
+              className="absolute top-7 right-5 flex size-11 appearance-none items-center justify-center bg-transparent p-0 text-charcoal sm:right-8"
             >
               <X className="size-5" strokeWidth={1.25} />
             </button>
