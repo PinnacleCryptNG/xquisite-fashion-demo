@@ -25,7 +25,7 @@ export function Hero() {
         priority
         sizes="100vw"
         className="absolute inset-0"
-        imageClassName="object-[50%_8%] motion-safe:animate-[xquisite-hero-still_11s_cubic-bezier(0.22,1,0.36,1)_forwards] sm:object-[46%_14%] md:object-[40%_24%] lg:object-[34%_30%] xl:object-[30%_22%]"
+        imageClassName="object-[50%_6%] motion-safe:animate-[xquisite-hero-still_11s_cubic-bezier(0.22,1,0.36,1)_forwards] sm:object-[46%_12%] md:object-[38%_26%] lg:object-[32%_32%] xl:object-[28%_22%]"
       />
 
       <div
@@ -34,11 +34,11 @@ export function Hero() {
       />
 
       <div className="relative mx-auto flex h-full max-w-[1600px] flex-col justify-end px-5 pt-24 pb-8 sm:px-8 sm:pb-12 lg:px-12 lg:pb-16">
-        <div className="max-w-[17rem] motion-safe:animate-[xquisite-hero-rise_1.15s_cubic-bezier(0.22,1,0.36,1)_0.12s_both] motion-reduce:opacity-100 sm:max-w-xs lg:max-w-sm xl:max-w-md">
+        <div className="max-w-[21.5rem] motion-safe:animate-[xquisite-hero-rise_1.15s_cubic-bezier(0.22,1,0.36,1)_0.12s_both] motion-reduce:opacity-100 sm:max-w-[24rem] lg:max-w-[26rem] xl:max-w-[30rem]">
           <p className="font-sans text-[10px] tracking-[0.32em] uppercase text-ivory/72 sm:text-[11px]">
             Nigeria · Contemporary womenswear
           </p>
-          <h1 className="mt-3 font-serif text-[2.1rem] leading-[1.05] font-light tracking-tight sm:mt-4 sm:text-4xl lg:text-5xl xl:text-[3.5rem] xl:leading-[1.04]">
+          <h1 className="mt-3 font-serif text-[2.15rem] leading-[1.06] font-light tracking-tight sm:mt-4 sm:text-[2.4rem] lg:text-[2.75rem] xl:text-[3.1rem] xl:leading-[1.05]">
             Contemporary fashion
             <br />
             for the modern woman.
