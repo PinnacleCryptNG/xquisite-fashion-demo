@@ -12,7 +12,7 @@ export function Collections() {
           className="mb-12 sm:mb-16"
         />
       </div>
-      <div className="grid lg:grid-cols-3">
+      <div className="grid sm:grid-cols-2 xl:grid-cols-4">
         {collections.map((collection) => (
           <CollectionCard key={collection.slug} {...collection} />
         ))}

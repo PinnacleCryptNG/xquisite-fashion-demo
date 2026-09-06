@@ -17,6 +17,9 @@ export function Footer() {
           <p className="mt-4 max-w-xs font-serif text-2xl font-light leading-snug text-charcoal">
             {siteConfig.tagline}
           </p>
+          <p className="mt-4 font-sans text-[11px] tracking-[0.22em] uppercase text-stone">
+            {siteConfig.locationLine}.
+          </p>
         </div>
 
         <nav aria-label="Footer">

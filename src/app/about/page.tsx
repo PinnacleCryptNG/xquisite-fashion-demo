@@ -3,11 +3,12 @@ import Link from "next/link";
 
 import { FashionImage } from "@/components/shared/FashionImage";
 import { Button } from "@/components/ui/button";
+import { siteImages } from "@/data/images";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "XQUISITE exists for the modern woman — confident, expressive and constantly evolving.",
+    "XQUISITE is a contemporary Nigerian fashion house created for the modern woman — confident, expressive and constantly evolving.",
 };
 
 export default function AboutPage() {
@@ -15,8 +16,8 @@ export default function AboutPage() {
     <div className="bg-ivory">
       <section className="relative min-h-[70vh]">
         <FashionImage
-          src="/images/brand-portrait.jpg"
-          alt="Portrait from the XQUISITE house"
+          src={siteImages.brandPortrait.src}
+          alt={siteImages.brandPortrait.alt}
           fillParent
           priority
           sizes="100vw"
@@ -25,9 +26,14 @@ export default function AboutPage() {
         />
         <div className="absolute inset-0 bg-ink/35" />
         <div className="relative mx-auto flex min-h-[70vh] max-w-[1600px] items-end px-5 pb-12 pt-28 sm:px-8 lg:px-12">
-          <h1 className="max-w-3xl font-serif text-5xl leading-[0.95] font-light tracking-tight text-ivory sm:text-6xl lg:text-7xl">
-            Made for the woman who knows who she is.
-          </h1>
+          <div>
+            <p className="mb-4 font-sans text-[11px] tracking-[0.32em] uppercase text-ivory/70">
+              Born in Nigeria. Designed for the modern woman.
+            </p>
+            <h1 className="max-w-3xl font-serif text-5xl leading-[0.95] font-light tracking-tight text-ivory sm:text-6xl lg:text-7xl">
+              Made for the woman who knows who she is.
+            </h1>
+          </div>
         </div>
       </section>
 
@@ -42,21 +48,17 @@ export default function AboutPage() {
         </div>
         <div className="max-w-xl space-y-6 font-sans text-sm leading-relaxed text-stone sm:text-[15px]">
           <p>
-            XQUISITE exists for the modern woman — confident, expressive and
-            constantly evolving. Fashion should not simply dress her. It should
-            reflect her.
+            XQUISITE is a contemporary fashion house created for the modern
+            woman.
           </p>
           <p>
-            We design contemporary silhouettes with intentional details: a
-            shoulder that sits, a hem that moves, a line that holds. Each piece
-            is made to become part of a personal signature — worn again, and
-            remembered.
+            Rooted in Nigeria and inspired by the confidence, movement and
+            individuality of today&apos;s woman, XQUISITE creates considered
+            pieces that balance contemporary design with effortless femininity.
           </p>
           <p>
-            Rooted in a modern African sensibility and cut for a global life,
-            the house is less interested in trend than in presence. The woman we
-            dress already knows who she is. We simply give her the clothes to
-            match.
+            Our collections are designed to move with her — from everyday
+            moments to the occasions that deserve to be remembered.
           </p>
         </div>
       </section>
@@ -64,8 +66,8 @@ export default function AboutPage() {
       <section className="grid lg:grid-cols-2">
         <div className="relative min-h-[60vh]">
           <FashionImage
-            src="/images/about.jpg"
-            alt="The XQUISITE woman in portrait"
+            src={siteImages.about.src}
+            alt={siteImages.about.alt}
             fillParent
             sizes="(max-width: 1024px) 100vw, 50vw"
           />

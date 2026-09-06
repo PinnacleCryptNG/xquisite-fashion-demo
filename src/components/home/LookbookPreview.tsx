@@ -15,7 +15,7 @@ export function LookbookPreview() {
           <SectionHeading
             eyebrow="Lookbook"
             title="The XQUISITE woman"
-            description="A visual expression of confidence, movement and modern femininity."
+            description="Confident. Contemporary. Unmistakably herself."
           />
           <Button asChild variant="outline" className="self-start">
             <Link href="/lookbook">View lookbook</Link>

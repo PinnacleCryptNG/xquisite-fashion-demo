@@ -7,7 +7,7 @@ import { generalEnquiryMessage, getWhatsAppUrl } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Speak with XQUISITE — for sizing, private orders and styling on WhatsApp.",
+    "Speak with XQUISITE in Nigeria — for sizing, private orders and styling on WhatsApp.",
 };
 
 export default function ContactPage() {
@@ -17,13 +17,16 @@ export default function ContactPage() {
     <div className="bg-ivory px-5 pt-28 pb-20 sm:px-8 sm:pt-32 sm:pb-24 lg:px-12 lg:pb-28">
       <div className="mx-auto grid max-w-[1100px] gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
         <div>
-          <p className="font-sans text-[11px] tracking-[0.28em] uppercase text-stone">
-            Contact
+          <p className="font-sans text-[13px] font-medium tracking-[0.38em] uppercase text-charcoal">
+            XQUISITE
           </p>
-          <h1 className="mt-4 font-serif text-5xl leading-[0.95] font-light tracking-tight text-charcoal sm:text-6xl">
-            We are here.
+          <h1 className="mt-6 font-serif text-4xl leading-[1.05] font-light tracking-tight text-charcoal sm:text-5xl">
+            {siteConfig.tagline}
           </h1>
-          <p className="mt-6 max-w-sm font-sans text-sm leading-relaxed text-stone">
+          <p className="mt-5 font-sans text-[11px] tracking-[0.24em] uppercase text-stone">
+            {siteConfig.locationLine}
+          </p>
+          <p className="mt-8 max-w-sm font-sans text-sm leading-relaxed text-stone">
             For orders, sizing and private appointments, WhatsApp is the most
             direct line to the house.
           </p>
@@ -46,14 +49,6 @@ export default function ContactPage() {
             </div>
             <div>
               <dt className="font-sans text-[10px] tracking-[0.22em] uppercase text-stone">
-                Email
-              </dt>
-              <dd className="mt-2 font-sans text-sm text-charcoal">
-                <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-              </dd>
-            </div>
-            <div>
-              <dt className="font-sans text-[10px] tracking-[0.22em] uppercase text-stone">
                 Instagram
               </dt>
               <dd className="mt-2">
@@ -69,10 +64,10 @@ export default function ContactPage() {
             </div>
             <div>
               <dt className="font-sans text-[10px] tracking-[0.22em] uppercase text-stone">
-                Atelier
+                Email
               </dt>
               <dd className="mt-2 font-sans text-sm text-charcoal">
-                {siteConfig.location}
+                <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
               </dd>
             </div>
           </dl>

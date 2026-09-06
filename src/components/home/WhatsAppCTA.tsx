@@ -14,8 +14,8 @@ export function WhatsAppCTA() {
           Find your XQUISITE.
         </h2>
         <p className="mx-auto mt-6 max-w-md font-sans text-sm leading-relaxed text-ivory/70 sm:text-[15px]">
-          Need help choosing a piece, finding your size or placing an order? Our
-          team is here to help.
+          Need help choosing your piece, finding your size or placing an order?
+          Our team is here to help.
         </p>
         <Button asChild variant="ivory" className="mt-10">
           <a href={href} target="_blank" rel="noopener noreferrer">

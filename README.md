@@ -1,6 +1,6 @@
 # XQUISITE
 
-Official website for **XQUISITE** — contemporary fashion for the modern woman.
+Official website for **XQUISITE** — a Nigerian fashion house designing contemporary womenswear for the modern woman.
 
 An editorial, conversion-focused boutique site. Shopping is arranged on WhatsApp; there is no checkout or account system yet.
 
@@ -27,18 +27,21 @@ npm start
 
 ## Configure WhatsApp and Instagram
 
-Copy `.env.example` to `.env.local` and replace the placeholders.
+Copy `.env.example` to `.env.local`.
 
 ```bash
-NEXT_PUBLIC_WHATSAPP_NUMBER=2340000000000
+# Nigeria international format, no + or spaces. Example: 2348012345678
+NEXT_PUBLIC_WHATSAPP_NUMBER=
 NEXT_PUBLIC_INSTAGRAM_URL=https://www.instagram.com/xquisite
 ```
 
-`NEXT_PUBLIC_WHATSAPP_NUMBER` must be the international format **without** `+` or spaces (for example `2348012345678`). Defaults live in `src/lib/config.ts`.
+Leave `NEXT_PUBLIC_WHATSAPP_NUMBER` empty until the live business number is ready. WhatsApp buttons still open with a pre-filled message. Configuration lives in `src/lib/config.ts`.
 
 ## Replace photography
 
-Campaign and product images live in `public/images/`. Keep the same filenames (or update the paths in `src/data/products.ts` and `src/data/editorial.ts`) when you swap in XQUISITE photography.
+All campaign imagery is catalogued in `src/data/images.ts` — alt text, intended usage, and file paths in one place.
+
+Drop XQUISITE photography into `public/images/` using the same filenames, or update the `src` values in that catalog.
 
 | Path | Use |
 | --- | --- |
@@ -51,7 +54,7 @@ Campaign and product images live in `public/images/`. Keep the same filenames (o
 | `public/images/lookbook/` | Lookbook |
 | `public/images/instagram/` | Instagram grid |
 
-Current files are high-quality fashion placeholders from Unsplash, structured so they can be replaced without touching layout.
+Current files are temporary women's fashion campaign stills, structured so they can be replaced without touching layout.
 
 ## Routes
 

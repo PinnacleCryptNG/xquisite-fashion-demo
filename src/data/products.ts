@@ -1,3 +1,4 @@
+import { siteImages } from "@/data/images";
 import type { Product } from "@/types/product";
 
 export const products: Product[] = [
@@ -16,16 +17,7 @@ export const products: Product[] = [
       "Fully lined bodice",
       "Dry clean only",
     ],
-    images: [
-      {
-        src: "/images/products/amina-1.jpg",
-        alt: "The Amina Dress — front view on a model in natural light",
-      },
-      {
-        src: "/images/products/amina-2.jpg",
-        alt: "The Amina Dress — detail of drape and hem",
-      },
-    ],
+    images: [...siteImages.products.amina],
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: true,
     newArrival: true,
@@ -45,16 +37,7 @@ export const products: Product[] = [
       "Wide, refined leg",
       "Dry clean recommended",
     ],
-    images: [
-      {
-        src: "/images/products/sienna-1.jpg",
-        alt: "The Sienna Set — tailored two-piece worn as a complete look",
-      },
-      {
-        src: "/images/products/sienna-2.jpg",
-        alt: "The Sienna Set — movement and proportion",
-      },
-    ],
+    images: [...siteImages.products.sienna],
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: true,
     newArrival: true,
@@ -74,16 +57,7 @@ export const products: Product[] = [
       "Side zip closure",
       "Ankle length",
     ],
-    images: [
-      {
-        src: "/images/products/nia-1.jpg",
-        alt: "The Nia Column Dress — full-length silhouette",
-      },
-      {
-        src: "/images/products/nia-2.jpg",
-        alt: "The Nia Column Dress — side profile",
-      },
-    ],
+    images: [...siteImages.products.nia],
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: true,
     newArrival: true,
@@ -103,16 +77,7 @@ export const products: Product[] = [
       "Functional welt pockets",
       "Fully lined",
     ],
-    images: [
-      {
-        src: "/images/products/amara-1.jpg",
-        alt: "The Amara Blazer — tailored jacket worn open",
-      },
-      {
-        src: "/images/products/amara-2.jpg",
-        alt: "The Amara Blazer — styling with contemporary separates",
-      },
-    ],
+    images: [...siteImages.products.amara],
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
     newArrival: true,
@@ -132,16 +97,7 @@ export const products: Product[] = [
       "Breathable drape",
       "Hand wash cold",
     ],
-    images: [
-      {
-        src: "/images/products/zuri-1.jpg",
-        alt: "The Zuri Co-Ord — matching set in a contemporary silhouette",
-      },
-      {
-        src: "/images/products/zuri-2.jpg",
-        alt: "The Zuri Co-Ord — fabric and finish close-up",
-      },
-    ],
+    images: [...siteImages.products.zuri],
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: true,
     newArrival: true,
@@ -161,16 +117,7 @@ export const products: Product[] = [
       "Concealed zip",
       "Dry clean only",
     ],
-    images: [
-      {
-        src: "/images/products/elara-1.jpg",
-        alt: "The Elara Gown — evening silhouette",
-      },
-      {
-        src: "/images/products/elara-2.jpg",
-        alt: "The Elara Gown — fabric movement",
-      },
-    ],
+    images: [...siteImages.products.elara],
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: true,
     newArrival: false,
@@ -190,16 +137,7 @@ export const products: Product[] = [
       "Midi length",
       "Gentle machine wash",
     ],
-    images: [
-      {
-        src: "/images/products/kesi-1.jpg",
-        alt: "The Kesi Wrap Dress — wrap silhouette in motion",
-      },
-      {
-        src: "/images/products/kesi-2.jpg",
-        alt: "The Kesi Wrap Dress — street styling",
-      },
-    ],
+    images: [...siteImages.products.kesi],
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
     newArrival: true,
@@ -219,16 +157,7 @@ export const products: Product[] = [
       "Side pockets",
       "Dry clean recommended",
     ],
-    images: [
-      {
-        src: "/images/products/imani-1.jpg",
-        alt: "The Imani Tailored Trousers — full look",
-      },
-      {
-        src: "/images/products/imani-2.jpg",
-        alt: "The Imani Tailored Trousers — proportion and stance",
-      },
-    ],
+    images: [...siteImages.products.imani],
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
     newArrival: false,
@@ -240,22 +169,29 @@ export const collections = [
     slug: "new-arrivals",
     name: "New Arrivals",
     href: "/shop?collection=new-arrivals",
-    image: "/images/collections/new-arrivals.jpg",
-    alt: "New arrivals from the XQUISITE collection",
+    image: siteImages.collections.newArrivals.src,
+    alt: siteImages.collections.newArrivals.alt,
   },
   {
     slug: "dresses",
     name: "Dresses",
     href: "/shop?collection=dresses",
-    image: "/images/collections/dresses.jpg",
-    alt: "XQUISITE dresses — contemporary silhouettes",
+    image: siteImages.collections.dresses.src,
+    alt: siteImages.collections.dresses.alt,
   },
   {
     slug: "sets",
     name: "Sets",
     href: "/shop?collection=sets",
-    image: "/images/collections/sets.jpg",
-    alt: "XQUISITE sets and co-ords",
+    image: siteImages.collections.sets.src,
+    alt: siteImages.collections.sets.alt,
+  },
+  {
+    slug: "tailoring",
+    name: "Tailoring",
+    href: "/shop?collection=tailoring",
+    image: siteImages.collections.tailoring.src,
+    alt: siteImages.collections.tailoring.alt,
   },
 ] as const;
 

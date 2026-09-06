@@ -6,7 +6,11 @@ function digitsOnly(value: string) {
 
 export function getWhatsAppUrl(message: string) {
   const phone = digitsOnly(siteConfig.whatsappNumber);
-  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  const text = encodeURIComponent(message);
+  if (!phone) {
+    return `https://wa.me/?text=${text}`;
+  }
+  return `https://wa.me/${phone}?text=${text}`;
 }
 
 export function productEnquiryMessage(productName: string, size?: string) {

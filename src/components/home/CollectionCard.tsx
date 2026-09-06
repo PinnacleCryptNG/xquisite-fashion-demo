@@ -13,7 +13,7 @@ export function CollectionCard({ name, href, image, alt }: CollectionCardProps) 
   return (
     <Link
       href={href}
-      className="group relative block min-h-[420px] overflow-hidden sm:min-h-[520px] lg:min-h-[640px]"
+      className="group relative block min-h-[380px] overflow-hidden sm:min-h-[480px] lg:min-h-[560px] xl:min-h-[640px]"
     >
       <FashionImage
         src={image}

@@ -1,4 +1,5 @@
 import { FashionImage } from "@/components/shared/FashionImage";
+import { siteImages } from "@/data/images";
 
 export function EditorialSection() {
   return (
@@ -6,8 +7,8 @@ export function EditorialSection() {
       <div className="mx-auto grid max-w-[1600px] lg:grid-cols-2">
         <div className="relative min-h-[70vh] lg:min-h-[90vh]">
           <FashionImage
-            src="/images/editorial.jpg"
-            alt="Editorial campaign still — contemporary silhouette in motion"
+            src={siteImages.editorial.src}
+            alt={siteImages.editorial.alt}
             fillParent
             sizes="(max-width: 1024px) 100vw, 50vw"
           />

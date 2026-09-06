@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Lookbook",
   description:
-    "The XQUISITE woman — a visual expression of confidence, movement and modern femininity.",
+    "The XQUISITE woman — confident, contemporary, unmistakably herself.",
 };
 
 export default function LookbookPage() {
@@ -18,7 +18,7 @@ export default function LookbookPage() {
         <SectionHeading
           eyebrow="Lookbook"
           title="The XQUISITE woman"
-          description="A visual expression of confidence, movement and modern femininity."
+          description="Confident. Contemporary. Unmistakably herself."
           className="mb-14 sm:mb-20"
         />
 
