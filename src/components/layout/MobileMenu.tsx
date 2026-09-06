@@ -101,7 +101,7 @@ export function MobileMenuPanel({
       aria-labelledby={titleId}
       aria-describedby={descriptionId}
       id="mobile-navigation"
-      className="flex flex-col bg-ivory px-6 pt-8 pb-10 text-charcoal"
+      className="relative flex flex-col bg-ivory px-6 pt-8 pb-10 text-charcoal sm:px-10"
       style={{
         position: "fixed",
         top: 0,
@@ -112,15 +112,20 @@ export function MobileMenuPanel({
         backgroundColor: "#f6f1ea",
       }}
     >
-      <h2
-        id={titleId}
-        className="font-sans text-[13px] font-medium tracking-[0.42em] uppercase sm:text-sm"
-      >
-        XQUISITE
-      </h2>
-      <p id={descriptionId} className="sr-only">
-        Primary navigation
-      </p>
+      <div className="shrink-0 pr-12">
+        <h2
+          id={titleId}
+          className="font-sans text-sm font-medium tracking-[0.44em] uppercase sm:text-[15px]"
+        >
+          XQUISITE
+        </h2>
+        <p
+          id={descriptionId}
+          className="mt-3 font-sans text-[10px] tracking-[0.28em] uppercase text-stone"
+        >
+          Nigeria · Contemporary womenswear
+        </p>
+      </div>
       <button
         ref={closeRef}
         type="button"
@@ -131,7 +136,10 @@ export function MobileMenuPanel({
         <X className="pointer-events-none size-5" strokeWidth={1.25} />
       </button>
 
-      <nav className="mt-24 flex flex-1 flex-col justify-center gap-8 sm:mt-28 sm:gap-10">
+      <nav
+        aria-label="Primary"
+        className="flex flex-1 flex-col justify-center gap-9 sm:gap-11"
+      >
         {links.map((link) => (
           <Link
             key={link.href}
@@ -144,7 +152,7 @@ export function MobileMenuPanel({
         ))}
       </nav>
 
-      <div className="flex items-center gap-8 border-t border-charcoal/10 pt-8">
+      <div className="flex shrink-0 items-center gap-8 border-t border-charcoal/10 pt-8">
         <a
           href={siteConfig.instagramUrl}
           target="_blank"
