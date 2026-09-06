@@ -25,7 +25,7 @@ export function EditorialCollectionCard({
           alt={alt}
           ratio="portrait"
           sizes="(max-width: 767px) 100vw, 50vw"
-          className="w-full lg:aspect-auto lg:h-[min(78vh,46rem)]"
+          className="w-full"
           imageClassName={imageClassName}
         />
         <div
