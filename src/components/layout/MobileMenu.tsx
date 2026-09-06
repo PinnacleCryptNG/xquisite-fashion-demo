@@ -2,7 +2,7 @@
 
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef } from "react";
 import { createPortal } from "react-dom";
 
 import { siteConfig } from "@/lib/config";
@@ -62,11 +62,6 @@ export function MobileMenuPanel({
   const descriptionId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
   const whatsappHref = getWhatsAppUrl(generalEnquiryMessage());
-  const [root, setRoot] = useState<HTMLElement | null>(null);
-
-  useLayoutEffect(() => {
-    setRoot(document.documentElement);
-  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -92,6 +87,8 @@ export function MobileMenuPanel({
       document.removeEventListener("keydown", onKeyDown);
     };
   }, [open, onOpenChange]);
+
+  const root = typeof document !== "undefined" ? document.documentElement : null;
 
   if (!root || !open) {
     return null;
