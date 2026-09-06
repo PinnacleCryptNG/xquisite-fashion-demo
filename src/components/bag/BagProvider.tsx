@@ -19,6 +19,8 @@ import {
   clampBagQuantity,
   parseBagEntries,
   readBagEntries,
+  readBagSnapshot,
+  rememberShopFromSlug,
   resolveBagLines,
   writeBagEntries,
 } from "@/lib/bag";
@@ -61,7 +63,7 @@ function subscribeBag(onChange: () => void) {
 }
 
 function getBagSnapshot() {
-  return window.localStorage.getItem(BAG_STORAGE_KEY) ?? "[]";
+  return readBagSnapshot();
 }
 
 function getServerSnapshot() {
@@ -123,6 +125,7 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
   const entries = useMemo(() => parseBagEntries(snapshot), [snapshot]);
 
   const add = useCallback((item: AddArgs) => {
+    rememberShopFromSlug(item.slug);
     commit(upsertEntry(readBagEntries(), item));
   }, []);
 

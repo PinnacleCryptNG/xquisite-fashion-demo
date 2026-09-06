@@ -1,10 +1,14 @@
 import { getProductBySlug } from "@/data/products";
+import { shopHref } from "@/data/shop-collections";
 import { formatNgn } from "@/lib/utils";
 import type { Product, ProductSize } from "@/types/product";
 
 export const BAG_STORAGE_KEY = "xquisite-edit";
+export const LAST_SHOP_KEY = "xquisite-last-shop";
 export const BAG_MIN_QTY = 1;
 export const BAG_MAX_QTY = 8;
+
+let memorySnapshot = "[]";
 
 export type BagEntry = {
   slug: string;
@@ -52,17 +56,58 @@ export function parseBagEntries(raw: string | null): BagEntry[] {
   }
 }
 
+export function keepKnownProducts(entries: BagEntry[]): BagEntry[] {
+  return entries.filter((entry) => Boolean(getProductBySlug(entry.slug)));
+}
+
+export function readBagSnapshot() {
+  if (typeof window === "undefined") return "[]";
+  try {
+    return window.localStorage.getItem(BAG_STORAGE_KEY) ?? memorySnapshot;
+  } catch {
+    return memorySnapshot;
+  }
+}
+
 export function readBagEntries(): BagEntry[] {
-  if (typeof window === "undefined") return [];
-  return parseBagEntries(window.localStorage.getItem(BAG_STORAGE_KEY));
+  return keepKnownProducts(parseBagEntries(readBagSnapshot()));
 }
 
 export function writeBagEntries(entries: BagEntry[]) {
-  window.localStorage.setItem(BAG_STORAGE_KEY, JSON.stringify(entries));
+  const next = keepKnownProducts(entries);
+  const raw = JSON.stringify(next);
+  memorySnapshot = raw;
+  try {
+    window.localStorage.setItem(BAG_STORAGE_KEY, raw);
+  } catch {
+    // Session-only fallback when localStorage is blocked or full.
+  }
+}
+
+export function rememberShopHref(href: string) {
+  try {
+    window.sessionStorage.setItem(LAST_SHOP_KEY, href);
+  } catch {
+    // Ignore — continue shopping falls back to /shop.
+  }
+}
+
+export function rememberShopFromSlug(slug: string) {
+  const product = getProductBySlug(slug);
+  if (!product) return;
+  rememberShopHref(shopHref({ collection: product.category }));
+}
+
+export function readLastShopHref() {
+  try {
+    return window.sessionStorage.getItem(LAST_SHOP_KEY) || "/shop";
+  } catch {
+    return "/shop";
+  }
 }
 
 export function resolveBagLines(entries: BagEntry[]): BagLine[] {
-  return entries.flatMap((entry) => {
+  return keepKnownProducts(entries).flatMap((entry) => {
     const product = getProductBySlug(entry.slug);
     if (!product) return [];
     return [

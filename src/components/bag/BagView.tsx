@@ -5,12 +5,14 @@ import Link from "next/link";
 import { BagItem } from "@/components/bag/BagItem";
 import { useBag } from "@/components/bag/BagProvider";
 import { Button } from "@/components/ui/button";
+import { readLastShopHref } from "@/lib/bag";
 import { formatNgn } from "@/lib/utils";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 export function BagView() {
   const { lines, count, estimatedTotal, ready, setQuantity, remove, clear, enquiryMessage } =
     useBag();
+  const shopBack = ready ? readLastShopHref() : "/shop";
 
   if (!ready) {
     return (
@@ -26,10 +28,13 @@ export function BagView() {
     return (
       <div className="flex min-h-[80vh] flex-col justify-center bg-ivory px-5 pt-24 pb-20 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-[1600px]">
-          <h1 className="font-sans text-[11px] font-medium tracking-[0.28em] text-stone uppercase">
-            Your edit is empty
+          <p className="font-sans text-[11px] font-medium tracking-[0.28em] text-stone uppercase">
+            Your edit
+          </p>
+          <h1 className="mt-5 max-w-xl font-serif text-4xl font-light tracking-tight text-charcoal sm:text-5xl">
+            Nothing here yet.
           </h1>
-          <p className="mt-5 max-w-xl font-serif text-4xl font-light tracking-tight text-charcoal sm:text-5xl">
+          <p className="mt-4 max-w-md font-sans text-[15px] leading-relaxed font-light text-stone">
             Begin with a piece that speaks to you.
           </p>
           <Link
@@ -50,18 +55,21 @@ export function BagView() {
     <div className="bg-ivory px-5 pt-28 pb-20 sm:px-8 sm:pt-32 sm:pb-24 lg:px-12 lg:pt-36 lg:pb-28">
       <div className="mx-auto max-w-[1600px]">
         <Link
-          href="/shop"
+          href={shopBack}
           className="inline-flex min-h-11 items-center font-sans text-[11px] tracking-[0.2em] text-stone uppercase transition-colors duration-500 hover:text-charcoal"
         >
           ← Continue shopping
         </Link>
 
         <header className="mt-8 max-w-xl">
-          <h1 className="font-sans text-[11px] font-medium tracking-[0.28em] text-stone uppercase">
+          <p className="font-sans text-[11px] font-medium tracking-[0.28em] text-stone uppercase">
             Your edit
+          </p>
+          <h1 className="mt-4 font-serif text-4xl leading-[1.05] font-light tracking-tight text-charcoal sm:text-5xl">
+            Pieces you&apos;ve chosen.
           </h1>
-          <p className="mt-4 font-serif text-4xl leading-[1.05] font-light tracking-tight text-charcoal sm:text-5xl">
-            Pieces you&apos;ve chosen to enquire about.
+          <p className="mt-4 font-sans text-[15px] leading-relaxed font-light text-stone">
+            Review your selection before sending your enquiry.
           </p>
         </header>
 
@@ -115,7 +123,7 @@ export function BagView() {
               This sends an enquiry. It does not place an order.
             </p>
             <Link
-              href="/shop"
+              href={shopBack}
               className="mt-8 inline-flex min-h-11 items-center font-sans text-[11px] tracking-[0.2em] text-stone uppercase transition-colors duration-500 hover:text-charcoal"
             >
               Continue shopping →

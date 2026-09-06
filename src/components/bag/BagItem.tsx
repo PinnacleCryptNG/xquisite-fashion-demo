@@ -19,13 +19,17 @@ export function BagItem({ line, onQuantityChange, onRemove }: BagItemProps) {
   return (
     <article className="grid grid-cols-[5.5rem_1fr] gap-4 py-8 sm:grid-cols-[7.5rem_1fr] sm:gap-6">
       <Link href={`/product/${line.slug}`} className="block">
-        <FashionImage
-          src={image.src}
-          alt={image.alt}
-          ratio="portrait"
-          sizes="120px"
-          imageClassName="motion-safe:group-hover:scale-100"
-        />
+        {image ? (
+          <FashionImage
+            src={image.src}
+            alt={image.alt}
+            ratio="portrait"
+            sizes="120px"
+            imageClassName="motion-safe:group-hover:scale-100"
+          />
+        ) : (
+          <div className="aspect-[3/4] bg-cream" aria-hidden />
+        )}
       </Link>
 
       <div>
@@ -38,9 +42,11 @@ export function BagItem({ line, onQuantityChange, onRemove }: BagItemProps) {
         {line.size ? (
           <p className="mt-2 font-sans text-sm text-stone">Size {line.size}</p>
         ) : null}
-        <p className="mt-2 font-sans text-sm text-charcoal">
-          {formatNgn(line.product.price)}
-        </p>
+        {line.product.price ? (
+          <p className="mt-2 font-sans text-sm text-charcoal">
+            {formatNgn(line.product.price)}
+          </p>
+        ) : null}
 
         <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
           <QuantitySelector

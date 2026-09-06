@@ -70,7 +70,7 @@ Current files are temporary women's fashion campaign stills, structured so they 
 
 ## Your Edit
 
-Pieces are collected client-side in **Your Edit** (not a checkout). Select a size on the product page, add to bag, then review on `/bag` and send one WhatsApp enquiry.
+Pieces are collected client-side in **Your Edit** (not a checkout). Select a size on the product page, add to bag, continue browsing or open `/bag`, then send one WhatsApp enquiry. A single-piece WhatsApp enquiry remains on the product page.
 
 The edit persists in `localStorage` under `xquisite-edit`. There is no payment, account, or order confirmation.
 

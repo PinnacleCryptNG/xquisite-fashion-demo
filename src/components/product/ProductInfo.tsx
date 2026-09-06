@@ -8,7 +8,9 @@ import { ProductDetails } from "@/components/product/ProductDetails";
 import { QuantitySelector } from "@/components/product/QuantitySelector";
 import { SizeSelector } from "@/components/product/SizeSelector";
 import { Button } from "@/components/ui/button";
+import { shopHref } from "@/data/shop-collections";
 import { formatNgn } from "@/lib/utils";
+import { getWhatsAppUrl, productEnquiryMessage } from "@/lib/whatsapp";
 import type { Product, ProductSize } from "@/types/product";
 
 type ProductInfoProps = {
@@ -34,6 +36,11 @@ export function ProductInfo({ product }: ProductInfoProps) {
     setError(null);
     setAdded(true);
   }
+
+  const continueHref = shopHref({ collection: product.category });
+  const pieceEnquireHref = getWhatsAppUrl(
+    productEnquiryMessage(product.name, size, quantity),
+  );
 
   return (
     <div className="lg:sticky lg:top-32">
@@ -78,16 +85,32 @@ export function ProductInfo({ product }: ProductInfoProps) {
           </p>
         ) : null}
         {added ? (
-          <p className="mt-5 font-sans text-sm leading-relaxed text-stone" role="status">
-            Added to your edit.{" "}
-            <Link
-              href="/bag"
-              className="text-charcoal underline decoration-charcoal/30 underline-offset-4"
-            >
-              View your edit
-            </Link>
-          </p>
+          <div className="mt-5" role="status">
+            <p className="font-sans text-sm text-stone">Added to your edit.</p>
+            <div className="mt-3 flex flex-wrap items-center gap-x-6">
+              <Link
+                href={continueHref}
+                className="inline-flex min-h-11 items-center font-sans text-[11px] tracking-[0.2em] text-charcoal uppercase"
+              >
+                Continue shopping
+              </Link>
+              <Link
+                href="/bag"
+                className="inline-flex min-h-11 items-center font-sans text-[11px] tracking-[0.2em] text-charcoal uppercase underline decoration-charcoal/30 underline-offset-4"
+              >
+                View your edit
+              </Link>
+            </div>
+          </div>
         ) : null}
+        <a
+          href={pieceEnquireHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-flex min-h-11 items-center font-sans text-[11px] tracking-[0.18em] text-stone uppercase transition-colors duration-500 hover:text-charcoal"
+        >
+          Enquire via WhatsApp
+        </a>
       </div>
 
       <div className="mt-14">

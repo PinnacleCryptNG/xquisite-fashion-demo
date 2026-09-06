@@ -20,7 +20,7 @@ export function productEnquiryMessage(
 ) {
   const qty = quantity > 1 ? ` (qty ${quantity})` : "";
   if (size) {
-    return `Hello XQUISITE, I'd like to order ${productName} in size ${size}${qty}.`;
+    return `Hello XQUISITE, I'd like to enquire about ${productName} in size ${size}${qty}.`;
   }
   return `Hello XQUISITE, I'd like to enquire about ${productName}${qty}.`;
 }
