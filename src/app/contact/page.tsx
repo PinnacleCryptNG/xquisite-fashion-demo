@@ -1,85 +1,19 @@
 import type { Metadata } from "next";
 
-import { ContactForm } from "@/components/contact/ContactForm";
-import { siteConfig } from "@/lib/config";
-import { generalEnquiryMessage, getWhatsAppUrl } from "@/lib/whatsapp";
+import { ContactIntro } from "@/components/contact/ContactIntro";
+import { NotesSignup } from "@/components/contact/NotesSignup";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Speak with XQUISITE in Nigeria — for sizing, private orders and styling on WhatsApp.",
+    "Reach XQUISITE on WhatsApp or Instagram for questions about a piece, sizing, availability or your next edit.",
 };
 
 export default function ContactPage() {
-  const whatsappHref = getWhatsAppUrl(generalEnquiryMessage());
-
   return (
-    <div className="bg-ivory px-5 pt-28 pb-20 sm:px-8 sm:pt-32 sm:pb-24 lg:px-12 lg:pb-28">
-      <div className="mx-auto grid max-w-[1100px] gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
-        <div>
-          <p className="font-sans text-[13px] font-medium tracking-[0.38em] uppercase text-charcoal">
-            XQUISITE
-          </p>
-          <h1 className="mt-6 font-serif text-4xl leading-[1.05] font-light tracking-tight text-charcoal sm:text-5xl">
-            {siteConfig.tagline}
-          </h1>
-          <p className="mt-5 font-sans text-[11px] tracking-[0.24em] uppercase text-stone">
-            {siteConfig.locationLine}
-          </p>
-          <p className="mt-8 max-w-sm font-sans text-sm leading-relaxed text-stone">
-            For orders, sizing and private appointments, WhatsApp is the most
-            direct line to the house.
-          </p>
-
-          <dl className="mt-12 space-y-8">
-            <div>
-              <dt className="font-sans text-[10px] tracking-[0.22em] uppercase text-stone">
-                WhatsApp
-              </dt>
-              <dd className="mt-2">
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-sans text-sm text-charcoal underline-offset-4 hover:underline"
-                >
-                  Chat with the studio
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="font-sans text-[10px] tracking-[0.22em] uppercase text-stone">
-                Instagram
-              </dt>
-              <dd className="mt-2">
-                <a
-                  href={siteConfig.instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-sans text-sm text-charcoal underline-offset-4 hover:underline"
-                >
-                  {siteConfig.instagramHandle}
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="font-sans text-[10px] tracking-[0.22em] uppercase text-stone">
-                Email
-              </dt>
-              <dd className="mt-2 font-sans text-sm text-charcoal">
-                <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-              </dd>
-            </div>
-          </dl>
-        </div>
-
-        <div className="border-t border-charcoal/10 pt-12 lg:border-t-0 lg:pt-0">
-          <p className="mb-10 font-sans text-[11px] tracking-[0.22em] uppercase text-stone">
-            Write to us
-          </p>
-          <ContactForm />
-        </div>
-      </div>
+    <div className="bg-ivory">
+      <ContactIntro />
+      <NotesSignup />
     </div>
   );
 }

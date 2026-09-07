@@ -4,6 +4,14 @@ function digitsOnly(value: string) {
   return value.replace(/\D/g, "");
 }
 
+export function getWhatsAppChatUrl() {
+  const phone = digitsOnly(siteConfig.whatsappNumber);
+  if (!phone) {
+    return "https://wa.me/";
+  }
+  return `https://wa.me/${phone}`;
+}
+
 export function getWhatsAppUrl(message: string) {
   const phone = digitsOnly(siteConfig.whatsappNumber);
   const text = encodeURIComponent(message);

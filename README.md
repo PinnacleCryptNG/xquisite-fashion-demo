@@ -30,12 +30,12 @@ npm start
 Copy `.env.example` to `.env.local`.
 
 ```bash
-# Nigeria international format, no + or spaces. Example: 2348012345678
-NEXT_PUBLIC_WHATSAPP_NUMBER=
-NEXT_PUBLIC_INSTAGRAM_URL=https://www.instagram.com/xquisite
+# Nigeria international format, no + or spaces.
+NEXT_PUBLIC_WHATSAPP_NUMBER=2349110383545
+NEXT_PUBLIC_INSTAGRAM_URL=https://www.instagram.com/pinnaclecrypt
 ```
 
-Leave `NEXT_PUBLIC_WHATSAPP_NUMBER` empty until the live business number is ready. WhatsApp buttons still open with a pre-filled message. Configuration lives in `src/lib/config.ts`.
+Displayed WhatsApp: `+234 911 038 3545`. Instagram: `Pinnaclecrypt`. Configuration lives in `src/lib/config.ts`.
 
 ## Replace photography
 
@@ -74,4 +74,15 @@ Pieces are collected client-side in **Your Edit** (not a checkout). Select a siz
 
 The edit persists in `localStorage` under `xquisite-edit`. There is no payment, account, or order confirmation.
 
-The enquiry message lists each piece, size, quantity, and an estimated total. WhatsApp uses `NEXT_PUBLIC_WHATSAPP_NUMBER` from `src/lib/config.ts` when set.
+The enquiry message lists each piece, size, quantity, and an estimated total. WhatsApp uses `+234 911 038 3545` via `src/lib/config.ts`.
+
+## Contact
+
+`/contact` is the enquiry close: WhatsApp, Instagram (`Pinnaclecrypt`), and **Notes from XQUISITE** — a frontend-only email list for the demo. Nothing is stored remotely.
+
+## Footer
+
+```
+© 2026 XQUISITE-FASHION. Portfolio Demo by Pinnacle
+Developed by Pinnacle
+```
