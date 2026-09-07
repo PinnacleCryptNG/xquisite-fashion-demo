@@ -1,12 +1,13 @@
+import { AboutReveal } from "@/components/about/AboutReveal";
 import { aboutCopy } from "@/data/about";
 
 export function AboutApproach() {
   return (
     <section
       aria-labelledby="about-approach-heading"
-      className="bg-ivory px-5 pb-20 sm:px-8 sm:pb-24 lg:px-12 lg:pb-32"
+      className="bg-ivory px-5 pb-24 sm:px-8 sm:pb-28 lg:px-12 lg:pb-36"
     >
-      <div className="mx-auto grid max-w-[1600px] gap-8 md:grid-cols-12 md:items-start md:gap-12 lg:gap-20">
+      <AboutReveal className="mx-auto grid max-w-[1600px] gap-8 md:grid-cols-12 md:items-start md:gap-12 lg:gap-20">
         <div className="md:col-span-5 lg:col-span-4">
           <p className="font-sans text-[11px] font-medium tracking-[0.28em] text-stone uppercase">
             {aboutCopy.approachEyebrow}
@@ -21,7 +22,7 @@ export function AboutApproach() {
         <p className="max-w-md font-sans text-[15px] leading-[1.75] font-light text-stone md:col-span-7 md:max-w-lg md:pt-8 lg:col-span-6 lg:col-start-7 lg:max-w-md lg:pt-2">
           {aboutCopy.approach}
         </p>
-      </div>
+      </AboutReveal>
     </section>
   );
 }

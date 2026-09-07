@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { AboutReveal } from "@/components/about/AboutReveal";
 import { FashionImage } from "@/components/shared/FashionImage";
 import { aboutCopy } from "@/data/about";
 import { siteImages } from "@/data/images";
@@ -11,7 +12,7 @@ export function AboutSecondary() {
       className="bg-ivory px-5 pb-24 sm:px-8 sm:pb-28 lg:px-12 lg:pb-36"
     >
       <div className="mx-auto grid max-w-[1600px] items-center gap-10 md:grid-cols-12 md:gap-12 lg:gap-20">
-        <div className="md:col-span-7 lg:col-span-7">
+        <AboutReveal className="md:col-span-7 lg:col-span-7">
           <FashionImage
             src={siteImages.about.src}
             alt={siteImages.about.alt}
@@ -20,8 +21,11 @@ export function AboutSecondary() {
             className="h-[min(56svh,26rem)] md:h-[min(64svh,36rem)] lg:h-[40rem]"
             imageClassName="object-[center_22%] motion-safe:group-hover:scale-100"
           />
-        </div>
-        <div className="max-w-md md:col-span-5 md:max-w-none lg:col-span-4 lg:col-start-9">
+        </AboutReveal>
+        <AboutReveal
+          className="max-w-md md:col-span-5 md:max-w-none lg:col-span-4 lg:col-start-9"
+          delay={90}
+        >
           <h2
             id="about-secondary-heading"
             className="font-serif text-3xl leading-[1.1] font-light tracking-tight text-charcoal sm:text-4xl lg:text-5xl"
@@ -37,7 +41,7 @@ export function AboutSecondary() {
           >
             {aboutCopy.cta}
           </Link>
-        </div>
+        </AboutReveal>
       </div>
     </section>
   );

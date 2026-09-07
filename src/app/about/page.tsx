@@ -9,7 +9,7 @@ import { AboutStatement } from "@/components/about/AboutStatement";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "XQUISITE is a contemporary Nigerian fashion house created for the modern woman — clothes that move with her, not define her.",
+    "Contemporary fashion for the modern woman. Clothes should move with her, not define her.",
 };
 
 export default function AboutPage() {

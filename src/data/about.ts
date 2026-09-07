@@ -2,15 +2,15 @@ export const aboutCopy = {
   eyebrow: "The XQUISITE woman",
   heading: "She dresses for where she's going.",
   opening:
-    "XQUISITE is a contemporary fashion house from Nigeria, cut for the modern woman. She already knows how she wants to arrive. We make the clothes that keep pace.",
+    "XQUISITE creates contemporary pieces for the woman moving through her own world — considered, confident and entirely herself.",
   statement: "Clothes should move with her, not define her.",
   approachEyebrow: "Our approach",
   approachHeading: "Considered, never complicated.",
   approach:
-    "We cut for movement first. Silhouettes that hold their line through a long day, fabrics that sit close without insisting, and details that earn their place. Nothing extra. Nothing loud.",
+    "We believe in pieces that earn their place in a wardrobe — silhouettes that feel current without becoming disposable, and details that speak without asking for attention.",
   secondaryHeading: "From the everyday to the unforgettable.",
   secondary:
-    "Morning ease. Evening presence. The same woman, the same standard — whether she is crossing a room or leaving it.",
+    "An evolving edit of contemporary pieces designed to meet the many versions of her.",
   cta: "Explore the collection →",
 } as const;
 
