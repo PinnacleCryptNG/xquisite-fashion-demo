@@ -11,21 +11,4 @@ export const siteConfig = {
     process.env.NEXT_PUBLIC_INSTAGRAM_URL ??
     "https://www.instagram.com/pinnaclecrypt",
   instagramHandle: "Pinnaclecrypt",
-  email: "hello@xquisite.fashion",
-  locationLine: "Based in Nigeria",
 } as const;
-
-export const navLinks = [
-  { href: "/shop", label: "Shop" },
-  { href: "/shop?collection=new-arrivals", label: "New Arrivals" },
-  { href: "/lookbook", label: "Lookbook" },
-  { href: "/about", label: "About" },
-] as const;
-
-export const footerLinks = [
-  { href: "/shop", label: "Shop" },
-  { href: "/shop?collection=new-arrivals", label: "New Arrivals" },
-  { href: "/lookbook", label: "Lookbook" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-] as const;

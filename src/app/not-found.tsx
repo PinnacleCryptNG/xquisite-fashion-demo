@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Page not found",
+  description: "This page is not here. Return to the XQUISITE collection.",
+  robots: { index: false },
+};
 
 export default function NotFound() {
   return (
@@ -8,7 +15,7 @@ export default function NotFound() {
       <p className="font-sans text-[11px] tracking-[0.28em] uppercase text-stone">
         404
       </p>
-      <h1 className="mt-4 font-serif text-5xl font-light tracking-tight text-charcoal">
+      <h1 className="mt-4 font-serif text-[2.15rem] font-light tracking-tight text-balance text-charcoal sm:text-5xl">
         This page has left the room.
       </h1>
       <p className="mt-4 max-w-sm font-sans text-sm text-stone">

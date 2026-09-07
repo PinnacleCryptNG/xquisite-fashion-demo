@@ -6,13 +6,37 @@ import { ShopEmpty } from "@/components/shop/ShopEmpty";
 import { ShopHeader } from "@/components/shop/ShopHeader";
 import { ShopToolbar } from "@/components/shop/ShopToolbar";
 import { filterProducts } from "@/data/products";
-import { isShopSort, sortProducts } from "@/data/shop-collections";
+import {
+  getShopCopy,
+  isShopSort,
+  shopNav,
+  sortProducts,
+} from "@/data/shop-collections";
 
-export const metadata: Metadata = {
-  title: "Shop",
-  description:
-    "Shop XQUISITE — contemporary silhouettes, everyday sets and statement pieces for the modern woman.",
-};
+const shopDescription =
+  "Shop XQUISITE — contemporary silhouettes, everyday sets and statement pieces for the modern woman.";
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ collection?: string }>;
+}): Promise<Metadata> {
+  const { collection } = await searchParams;
+  const nav = shopNav.find((item) => item.value === collection);
+
+  if (nav && nav.value !== "all") {
+    const copy = getShopCopy(collection);
+    return {
+      title: nav.label,
+      description: copy.description ?? shopDescription,
+    };
+  }
+
+  return {
+    title: "Shop",
+    description: shopDescription,
+  };
+}
 
 export default async function ShopPage({
   searchParams,

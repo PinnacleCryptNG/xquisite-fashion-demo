@@ -87,7 +87,7 @@ export function Header() {
                 href={siteConfig.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="XQUISITE on Instagram"
+                aria-label="Pinnaclecrypt on Instagram"
                 className="flex size-9 items-center justify-center opacity-55 transition-opacity duration-500 hover:opacity-100"
               >
                 <Instagram className="size-3.5" strokeWidth={1.4} />

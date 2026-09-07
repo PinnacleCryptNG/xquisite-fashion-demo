@@ -16,6 +16,7 @@ export default function LookbookPage() {
     <div className="bg-ivory px-5 pt-28 pb-20 sm:px-8 sm:pt-32 sm:pb-24 lg:px-12 lg:pb-28">
       <div className="mx-auto max-w-[1600px]">
         <SectionHeading
+          as="h1"
           eyebrow="Lookbook"
           title="The XQUISITE woman"
           description="Confident. Contemporary. Unmistakably herself."

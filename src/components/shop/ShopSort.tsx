@@ -11,7 +11,7 @@ export function ShopSort() {
   const current = params.get("sort") ?? "recommended";
 
   return (
-    <div className="hidden items-center gap-3 md:flex">
+    <div className="flex items-center gap-3">
       <label
         htmlFor="shop-sort"
         className="font-sans text-[11px] tracking-[0.2em] text-stone uppercase"
@@ -31,7 +31,7 @@ export function ShopSort() {
           const query = next.toString();
           router.push(query ? `${pathname}?${query}` : pathname);
         }}
-        className="cursor-pointer appearance-none bg-transparent font-sans text-[11px] tracking-[0.14em] text-charcoal uppercase outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-charcoal"
+        className="min-h-11 cursor-pointer appearance-none bg-transparent font-sans text-[11px] tracking-[0.14em] text-charcoal uppercase outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-charcoal"
       >
         {shopSortOptions.map((option) => (
           <option key={option.value} value={option.value}>

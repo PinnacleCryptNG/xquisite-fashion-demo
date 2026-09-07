@@ -30,7 +30,8 @@ export function ContactIntro() {
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center font-sans text-base text-charcoal sm:text-lg"
+                aria-label={`WhatsApp ${siteConfig.whatsappDisplay}`}
+                className="inline-flex min-h-11 items-center font-sans text-base text-charcoal underline decoration-charcoal/25 underline-offset-[0.35em] sm:text-lg"
               >
                 {siteConfig.whatsappDisplay}
               </a>
@@ -45,7 +46,8 @@ export function ContactIntro() {
                 href={siteConfig.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center font-sans text-base text-charcoal sm:text-lg"
+                aria-label={`Instagram ${siteConfig.instagramHandle}`}
+                className="inline-flex min-h-11 items-center font-sans text-base text-charcoal underline decoration-charcoal/25 underline-offset-[0.35em] sm:text-lg"
               >
                 {siteConfig.instagramHandle}
               </a>
