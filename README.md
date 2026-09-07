@@ -65,7 +65,7 @@ Current files are temporary women's fashion campaign stills, structured so they 
 | `/product/[slug]` | Product detail |
 | `/bag` | Your Edit — selected pieces and WhatsApp enquiry |
 | `/lookbook` | Editorial lookbook |
-| `/about` | The house |
+| `/about` | The XQUISITE woman — house story and approach |
 | `/contact` | Contact and WhatsApp |
 
 ## Your Edit
